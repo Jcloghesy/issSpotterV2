@@ -1,15 +1,19 @@
+// const {
+//   fetchMyIP,
+//   fetchCoordsByIP,
+//   fetchISSFlyOverTimes,
+// } = require("./iss_promised");
 const { nextISSTimesForMyLocation } = require("./iss_promised");
+const { printPassTimes } = require("./index");
 
-const printPassTimes = (times) => {
-  for (const time of times) {
-    let date = new Date(time.risetime);
-    console.log(`Next pass at ${date} for ${time.duration} seconds.`);
-  }
-};
+// fetchMyIP()
+//   .then(fetchCoordsByIP)
+//   .then(fetchISSFlyOverTimes)
+//   .then((body) => console.log(body));
 
 nextISSTimesForMyLocation()
-  .then((times) => {
-    printPassTimes(times);
+  .then((passTimes) => {
+    printPassTimes(passTimes);
   })
   .catch((error) => {
     console.log("It didn't work: ", error.message);
